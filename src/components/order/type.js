@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { BASE_URL } from '../../mocks/handlers';
 import Products from './products';
+import ErrorBanner from '../common/errorBanner';
 
 const Type = ({ orderType }) => {
   const [items, setItems] = useState([]);
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
     loadItems(orderType);
@@ -15,7 +17,7 @@ const Type = ({ orderType }) => {
       const response = await axios(`${BASE_URL}/${orderType}`);
       setItems(response.data);
     } catch (error) {
-      console.error(error);
+      setHasError(true);
     }
   };
 
@@ -29,6 +31,9 @@ const Type = ({ orderType }) => {
     />
   ));
 
+  if (hasError) {
+    return <ErrorBanner />;
+  }
   return <div>{optionItems}</div>;
 };
 
