@@ -1,6 +1,6 @@
 import { rest } from 'msw';
 
-const BASE_URL = 'http://localhost:5000';
+export const BASE_URL = 'http://localhost:5000';
 
 const productHandler = rest.get(`${BASE_URL}/products`, (req, res, ctx) => {
   return res(
