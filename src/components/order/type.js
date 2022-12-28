@@ -3,6 +3,7 @@ import axios from 'axios';
 import { BASE_URL } from '../../mocks/handlers';
 import Products from './products';
 import ErrorBanner from '../common/errorBanner';
+import Options from './options';
 
 const Type = ({ orderType }) => {
   const [items, setItems] = useState([]);
@@ -21,7 +22,7 @@ const Type = ({ orderType }) => {
     }
   };
 
-  const ItemComponent = orderType === 'products' ? Products : null;
+  const ItemComponent = orderType === 'products' ? Products : Options;
 
   const optionItems = items.map((item) => (
     <ItemComponent

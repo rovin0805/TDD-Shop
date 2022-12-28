@@ -28,3 +28,10 @@ test('서버에서 에러 발생 시 에러 문구를 표출한다.', async () =
   const errorBanner = await screen.findByTestId('error-banner');
   expect(errorBanner).toHaveTextContent('에러가 발생했습니다.');
 });
+
+test('서버에서 옵션 정보를 가져온다.', async () => {
+  render(<Type orderType='options' />);
+
+  const optionsCheckboxes = await screen.findAllByRole('checkbox');
+  expect(optionsCheckboxes).toHaveLength(2);
+});
