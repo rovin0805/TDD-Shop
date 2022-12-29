@@ -15,8 +15,11 @@ const Products = ({ name, imagePath, updateItemCount }) => {
         alt={`${name} product`}
       />
       <form style={{ marginTop: '10px' }}>
-        <label style={{ textAlign: 'center' }}>{name}</label>
+        <label htmlFor={name} style={{ textAlign: 'center' }}>
+          {name}
+        </label>
         <input
+          id={name}
           type='number'
           style={{ marginLeft: 7 }}
           name='quantity'
