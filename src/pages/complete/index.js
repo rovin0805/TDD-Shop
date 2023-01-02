@@ -5,7 +5,7 @@ import { OrderContext } from '../../contexts/orderContext';
 import { BASE_URL } from '../../mocks/handlers';
 
 const Complete = ({ setStep }) => {
-  const [orderData] = useContext(OrderContext);
+  const [orderData, _, resetOrderData] = useContext(OrderContext);
   const [orderHistory, setOrderHistory] = useState([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -22,6 +22,11 @@ const Complete = ({ setStep }) => {
     } catch (err) {
       setError(true);
     }
+  };
+
+  const handleClick = () => {
+    setStep(0);
+    resetOrderData();
   };
 
   if (error) {
@@ -49,7 +54,7 @@ const Complete = ({ setStep }) => {
           ))}
         </tbody>
       </table>
-      <button onClick={() => setStep(0)}>첫 페이지로</button>
+      <button onClick={handleClick}>첫 페이지로</button>
     </div>
   );
 };

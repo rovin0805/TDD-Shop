@@ -66,6 +66,7 @@ test('from order to completion', async () => {
   });
   userEvent.click(firstPageButton);
 
+  // 첫 페이지
   await waitFor(() => {
     screen.getByRole('spinbutton', {
       name: 'America',
@@ -74,4 +75,10 @@ test('from order to completion', async () => {
   //   await screen.findByRole('spinbutton', {
   //     name: 'America',
   //   });
+
+  const productsTotal = screen.getByText('상품 총 가격: 0');
+  expect(productsTotal).toBeInTheDocument();
+
+  const optionsTotal = screen.getByText('옵션 총 가격: 0');
+  expect(optionsTotal).toBeInTheDocument();
 });
