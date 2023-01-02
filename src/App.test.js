@@ -48,4 +48,21 @@ test('from order to completion', async () => {
 
   const confirmOrderButton = screen.getByRole('button', { name: '주문 확인' });
   userEvent.click(confirmOrderButton);
+
+  // 주문 완료 페이지
+  const loading = screen.getByText(/loading/i);
+  expect(loading).toBeInTheDocument();
+
+  const completeHeader = await screen.findByRole('heading', {
+    name: '주문이 성공했습니다.',
+  });
+  expect(completeHeader).toBeInTheDocument();
+
+  const loadingDisappeared = screen.queryByText('loading');
+  expect(loadingDisappeared).not.toBeInTheDocument();
+
+  const firstPageButton = screen.getByRole('button', {
+    name: '첫 페이지로',
+  });
+  userEvent.click(firstPageButton);
 });

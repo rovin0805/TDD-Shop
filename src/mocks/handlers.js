@@ -24,4 +24,9 @@ const optionsHandler = rest.get(`${BASE_URL}/options`, (req, res, ctx) => {
   );
 });
 
-export const handlers = [productHandler, optionsHandler];
+const completeHandler = rest.post(`${BASE_URL}/order`, (req, res, ctx) => {
+  let dummyData = [{ orderNumber: 123123, price: 2000 }];
+  return res(ctx.json(dummyData));
+});
+
+export const handlers = [productHandler, optionsHandler, completeHandler];
