@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen } from '../../../utils/test-utils';
 import Summary from '..';
 
 test('주문 체크박스를 눌러야만 주문 확인 버튼을 누를 수 있다.', () => {
