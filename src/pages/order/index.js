@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import Type from '../../components/order/type';
 import { OrderContext } from '../../contexts/orderContext';
 
-const Order = () => {
+const Order = ({ setStep }) => {
   const [orderData] = useContext(OrderContext);
 
   return (
@@ -16,7 +16,7 @@ const Order = () => {
         <div>
           <h2>Total Price : {orderData.totals.total}</h2>
           <br />
-          <button>주문</button>
+          <button onClick={() => setStep(1)}>주문하기</button>
         </div>
       </div>
     </div>
